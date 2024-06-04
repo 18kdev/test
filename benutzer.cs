@@ -102,6 +102,7 @@ namespace Lernen
             {
                 if (aktuellerBenutzer.getIstAdmin())
                 {
+                    // Die Methode "Add" fügt ein Element zur Liste hinzu (Du bekommst alle Methoden von die Klasse List in Materialien als Hilfe. Musst du nicht auswendig wissen.)
                     alleAdmins.Add(aktuellerBenutzer);
                 }
             }
