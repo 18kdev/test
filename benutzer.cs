@@ -87,26 +87,45 @@ namespace Lernen
             this.istAdmin = istAdmin;
         }
 
-        // Statische Methode, um alle Admins zu finden
+        // Statische Methode, die alle Admins in einer Liste zurückgibt
         // public = Methode kann von außerhalb der Klasse aufgerufen werden
-        // static = Methode gehört zur Klasse und nicht zu einer Instanz der Klasse (Man kann es aufrufen, ohne ein Objekt der Klasse zu erstellen mit new Benutzer())
+        // static = Methode gehört zur Klasse und nicht zu einer Instanz der Klasse
         // Benutzer = Rückgabetyp der Methode
         // getAlleAdmins = Name der Methode
-        //
-        // Für FOS Abschlussprüfung:
-        // Du musst mit foreach arbeiten wenn was gesucht wird, weil es eine Liste ist.
 
+        // Wenn du mehrere Admins hast, dann musst du eine Liste von Admins zurückgeben
         public static Benutzer getAlleAdmins()
         {
+            List<Benutzer> alleAdmins = new List<Benutzer>();
+
             foreach (Benutzer aktuellerBenutzer in alleBenutzer)
             {
-                if (aktuellerBenutzer.getIstAdmin() == true) // Es ist entweder true oder false, also ein bool
+                if (aktuellerBenutzer.getIstAdmin())
                 {
-                    return aktuellerBenutzer; // Rückgabe des gefundenen Benutzers
+                    alleAdmins.Add(aktuellerBenutzer);
                 }
             }
 
-            return new Benutzer("", "", 0, "", "", ""); // Rückgabe eines leeren Benutzers, wenn kein Admin gefunden wird
+            return alleAdmins;
+        }
+
+        // Statische Methode, um einen Admin anhand der E-Mail zu finden
+        // public = Methode kann von außerhalb der Klasse aufgerufen werden
+        // static = Methode gehört zur Klasse und nicht zu einer Instanz der Klasse
+        // Benutzer = Rückgabetyp der Methode
+        // getAdmin = Name der Methode
+        // string gesuchteEmail = Parameter, der beim Aufruf der Methode übergeben werden muss
+        public static Benutzer getAdmin(string gesuchteEmail)
+        {
+            foreach (Benutzer aktuellerBenutzer in alleBenutzer)
+            {
+                if (aktuellerBenutzer.getEmail() == gesuchteEmail && aktuellerBenutzer.getIstAdmin())
+                {
+                    return aktuellerBenutzer;
+                }
+            }
+
+            return new Benutzer("", "", 0, "", "", "");
         }
 
         // Statische Methode, um einen Benutzer anhand der E-Mail zu finden
